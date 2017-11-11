@@ -7,10 +7,10 @@
       </label>
     </view>
     <view class="search-all">
-      <scroll-view scroll-y style="height: 100%;" bindscrolltolower="download" scroll-top="{{scrollTop}}" >
+      <scroll-view scroll-y style="height: 100%;" bindscrolltolower="download" scroll-top="{{scrollTop}}">
         <view>
         <view class='sear-item' wx:for="{{searchBook}}">
-          <image bindtap="goto" id="{{item.id}}" src='{{item.image}}'></image>
+          <image bindtap="goto" mode='aspectFit' id="{{item.id}}" src='{{item.image}}'></image>
           <view class='sear-text'>
             <text class='ti'>书名：{{item.title}}</text>
             <text>作者：{{item.author[0]}}</text>
@@ -20,6 +20,8 @@
             <view class='jj'>简介：{{item.summary}}</view>
           </view>
         </view>
+        <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>  
+        <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
         </view>
       </scroll-view>
     </view>

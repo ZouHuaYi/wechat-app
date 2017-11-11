@@ -1,8 +1,7 @@
 .bigImg{
-  width: 50%;
+  width: 60%;
   margin: 0 auto;
   padding:30rpx 0; 
-  height: 500rpx;
 }
 .bigImg image{
   width: 100%;

@@ -87,3 +87,7 @@
   height: 0;
   color: transparent;
 }
+.loading{
+  text-align: center;
+  height: 40px;
+}

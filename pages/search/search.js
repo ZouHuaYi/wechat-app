@@ -7,20 +7,22 @@ Page({
   data: {
     inputValue:"",
     searchUrl:"",
-    addNum: 5,
+    addNum: 2,
     addIndex: 0,
-    book: []
+    book: [],
+    reqone:true
   },
 
   search:function(ev){
    var val=ev.detail.value.trim();
    var that=this;
+   //返回原来的高度
    this.setData({
      scrollTop:0
    })
-   if(val.lenght){
+   if (val.length){
      wx.request({
-       url: app.globalData.doubanBaseUrl + app.globalData.bookSearch + "?" + "q=" + val +"&start=0&count=10",
+       url: app.globalData.doubanBaseUrl + app.globalData.bookSearch + "?" + "q=" + val +"&start=0&count=5",
        data:{},
        header:{
          'Content-Type': 'json'  //豆瓣的API的格式一定是要json
@@ -32,6 +34,8 @@ Page({
            list.push(res.data.books[i]);
          }
         that.data.searchUrl=val;
+        that.data.addIndex=0;
+        that.data.addNum=2;
         that.setData({
           searchBook:list
         })
@@ -51,27 +55,40 @@ Page({
   download:function(){
     var that=this;
     this.setData({
-      loadingHidden: false
+      searchLoading: true,
+      searchLoadingComplete: false
     })
-    wx.request({
-      url: app.globalData.doubanBaseUrl + app.globalData.bookSearch + "?" + "q=" + that.data.searchUrl + "start=" + (10 + that.data.addIndex * that.data.addNum) + "&count=" + that.data.addNum,
-      data:{},
-      header:{
-        'Content-type':'json'
-      },
-      success:function(res){
-        var list = that.data.book;
-        for (let i = 0; i < res.data.books.length; i++) {
-          list.push(res.data.books[i]);
-        }
-        console.log(that.data.searchUrl)
-        that.data.addIndex++;
-        that.setData({
-          searchBook: list,
-          loadingHidden: true
+    if(that.data.reqone){
+      that.data.reqone=false;
+      setTimeout(function(){
+        wx.request({
+          url: app.globalData.doubanBaseUrl + app.globalData.bookSearch + "?" + "q=" + that.data.searchUrl + "&start=" + (5 + that.data.addIndex * that.data.addNum) + "&count=" + that.data.addNum,
+          data: {},
+          header: {
+            'Content-type': 'json'
+          },
+          success: function (res) {
+            console.log(that.data.addNum, that.data.addIndex)
+            var list = that.data.book;
+            for (let i = 0; i < res.data.books.length; i++) {
+              list.push(res.data.books[i]);
+            }
+            that.data.addIndex++;
+            that.setData({
+              searchBook: list,
+              searchLoading: false
+            })
+          },
+          complete:function(){
+            that.data.reqone = true;
+            that.setData({
+              searchLoadingComplete:true
+            })
+          }
         })
-      }
-    })
+      },1000)
+    }
+  
   },
   /**
    * 生命周期函数--监听页面加载

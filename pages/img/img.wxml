@@ -1,0 +1,11 @@
+<view class="container">
+  <view class='test-img'>
+    <image class='fill' mode='scaleToFill' src='../../images/1.jpg'></image>
+    <image class='fill' mode='aspectFit' src='../../images/1.jpg'></image>
+    <image class='fill' mode='aspectFill' src='../../images/1.jpg'></image>
+    <!-- 常用的高度自动适应，图片的宽度固定  -->
+    <image class='fill' mode='widthFix' src='../../images/1.jpg'></image>
+    <!-- 这个是宽高比例是从js里面修改的  -->
+     <image class='fill' bindload="imageLoad" style="width:{{ images.width }}px; height:{{ images.height }}px;" src='../../images/1.jpg'></image>
+  </view>
+</view>

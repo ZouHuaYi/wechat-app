@@ -9,7 +9,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.4",
-	"appid": "touristappid",
+	"appid": "wx599db99caf497733",
 	"projectname": "wechattest",
 	"condition": {
 		"search": {
@@ -27,6 +27,18 @@
 					"id": -1,
 					"name": "search",
 					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "details",
+					"pathName": "pages/details/details",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "img",
+					"pathName": "pages/img/img",
 					"query": ""
 				}
 			]

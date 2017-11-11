@@ -25,7 +25,6 @@ swiper-item image{
 }
 .book-image image{
   width: 300rpx;
-  height: 350rpx;
 }
 .book-text{
   flex: 1;

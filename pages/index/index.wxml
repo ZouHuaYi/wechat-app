@@ -15,7 +15,7 @@
     <view class='all-book'>
       <view class='book-item' wx:for="{{books}}">
         <view class='book-image' id="{{item.id}}" bindtap="goto">
-          <image src='{{item.image}}' />
+          <image  mode='widthFix' src='{{item.image}}' />
         </view>
         <view class='book-text'>
           <text>书名：{{item.title}}</text>

@@ -1,6 +1,6 @@
 <view class="container">
   <view class='book-box'>
-    <view class='bigImg'><image src='{{conBook.images.large}}'></image></view>
+    <view class='bigImg'><image mode='widthFix' src='{{conBook.images.large}}'></image></view>
     <view class='book-content'>
       <view class='con-head'>
         <text class='n'>{{conBook.title}}</text>

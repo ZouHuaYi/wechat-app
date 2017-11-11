@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/details/details",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/img/img"
   ],
   "window":{
     "backgroundTextStyle": "white",
